@@ -18,6 +18,7 @@ docker run \
   -p 8080:8080 \
   $appName
 
+# Make request every 3 seconds
 while true
 do
   response=$(curl http://localhost:8080)
