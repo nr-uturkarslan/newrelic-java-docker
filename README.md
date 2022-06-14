@@ -6,19 +6,23 @@ The application is a simple server which provides a `GET` endpoint for health ch
 
 The goal is to pack this app into a Docker container with New Relic and observe its behavior in New Relic UI per making calls to its endpoint.
 
-# Steps
+# Setup
 
 ## Download New Relic agent files
 
-The New Relic Java APM can be downloaded as follows:
+The minimal necessary files are `newrelic.jar` and `newrelic.yml` which can be found in the applications root folder (`/demo/newrelic/`) in this repo.
+
+These files can also be downloaded as follows:
 
 `curl -O https://download.newrelic.com/newrelic/java-agent/newrelic-agent/current/newrelic-java.zip`
 
-Within the zip file, the `newrelic.jar` and `newrelic.yml` files are to be found. These files should be put into the same folder. In this demo they are to be found in the applications root folder (`/demo/newrelic/`).
+**Important**: The `newrelic.yml` file should be put into the same folder as the `newrelic.jar` file so that it can find it in the runtime!
 
 ## Create a Dockerfile
 
-There are multiple ways to build a Docker image for a Java application. Wihtin this demo, everything from building to running the application is accomplished within the Dockerfile.
+There are multiple ways to build a Docker image for a Java application. Wihtin this demo, everything from building to running the application is accomplished with Docker.
+
+Thereby no JDK, JRE or Maven is required to be installed on the host on which the `docker build` and `docker run` commands are executed.
 
 ### Build the app with a base JDK image
 ```
@@ -71,7 +75,7 @@ The snippet above;
 5. exposes the port `8080`
 6. runs the application target jar file with `newrelic.jar` as the New Relic agent
 
-### Run script
+## Runner
 
 The script `run_demo.sh` is automatically creating the setup environment and starts to make request to the application.
 
