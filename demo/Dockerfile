@@ -18,8 +18,8 @@ ENV NEW_RELIC_LOG_FILE_NAME="STDOUT"
 ADD newrelic/newrelic.jar /usr/local/lib
 ADD newrelic/newrelic.yml /usr/local/lib
 
-RUN sed -i s/"NEWRELIC_APP_NAME"/$newRelicAppName/g /usr/local/lib/newrelic.yml
-RUN sed -i s/"NEWRELIC_LICENSE_KEY"/$newRelicLicenseKey/g /usr/local/lib/newrelic.yml
+RUN sed -i s/"NEW_RELIC_APP_NAME"/$newRelicAppName/g /usr/local/lib/newrelic.yml
+RUN sed -i s/"NEW_RELIC_LICENSE_KEY"/$newRelicLicenseKey/g /usr/local/lib/newrelic.yml
 
 EXPOSE 8080
 
